@@ -8,7 +8,6 @@
 ### Association
 - has_many :auctions
 - has_many :purchases   
-- has_many :likes
 
 ## auctionsテーブル
 |Column|Type|Options|
