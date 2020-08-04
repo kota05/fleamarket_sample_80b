@@ -9,12 +9,7 @@
 - has_many :auctions
 - has_many :purchases   
 - has_many :likes
-## likesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|like|integer|
-### Association
-- belongs_to :user
+
 ## auctionsテーブル
 |Column|Type|Options|
 |------|----|-------|
