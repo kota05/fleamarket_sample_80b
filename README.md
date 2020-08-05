@@ -6,10 +6,10 @@
 |password|string|null: false|
 |name|string|null: false|
 ### Association
-- has_many :auctions
-- has_many :purchases   
+- has_many :sells
+- has_many :buys   
 
-## auctionsテーブル
+## sellsテーブル(出品)
 |Column|Type|Options|
 |------|----|-------|
 |title|text|null: false| 
@@ -19,34 +19,37 @@
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- has_many :purchases
-- has_many :auctions_categories
-- has_many :categories,  through:  :actions_categories
+- has_many :buys
+- has_many :sells_categories
+- has_many :categories,  through:  :sells_categories
+
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
 ### Association
-- has_many :auctions_categories
-- has_many :auctions,  through:  :auctions_categories
-## auctions_categoriesテーブル
+- has_many :sells_categories
+- has_many :sells,  through:  :sells_categories
+
+## sells_categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|auction_id|integer|null: false, foreign_key: true|
+|sell_id|integer|null: false, foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :auction
+- belongs_to :sell
 - belongs_to :category 
-- belongs_to :purchase
-## purchasesテーブル
+- belongs_to :buy
+
+## buysテーブル(購入)
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false| 
 |price|integer 
 |user_id|integer|null: false, foreign_key: true|
-|auction_id|integer|null: false, foreign_key: true|
+|sell_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :auction 
+- belongs_to :sell 
 - belongs_to :user  
-- has_many :auctions_categories
-- has_many  :categories,  through:  :actions_categories
+- has_many :sells_categories
+- has_many  :categories,  through:  :sells_categories
